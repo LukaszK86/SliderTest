@@ -1,5 +1,5 @@
-import org.junit.After;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -16,31 +16,31 @@ import java.util.Date;
 
 public class TestCase {
 
-    public WebDriver driver;
+    public static WebDriver driver;
 
-    public void takesScreenshot(WebDriver driver, String fileWithPath) throws Exception {
+    public static void takesScreenshot(WebDriver driver, String fileWithPath) throws Exception {
         TakesScreenshot takesScreenshot = ((TakesScreenshot) driver);
         File sourceFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
         File destinationFile = new File(fileWithPath);
         org.apache.commons.io.FileUtils.copyFile(sourceFile, destinationFile);
     }
 
-    public void analyzeLog() {
+    public static void analyzeLog() {
         LogEntries logEntries = driver.manage().logs().get(LogType.BROWSER);
         for (LogEntry entry : logEntries) {
             System.out.println(new Date(entry.getTimestamp()) + " " + entry.getLevel() + " " + entry.getMessage());
         }
     }
 
-    @Before
-    public void beforeTest() throws MalformedURLException {
+    @BeforeClass
+    public static void beforeTest() throws MalformedURLException {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setPlatform(Platform.WINDOWS);
         driver = new RemoteWebDriver(new URL("http://192.168.8.100:5556/wd/hub"), capabilities);
     }
 
-    @After
-    public void afterTest() throws Exception {
+    @AfterClass
+    public static void afterTest() throws Exception {
         takesScreenshot(driver, "C:\\Users\\Kuki\\Documents\\Programowanie\\Test\\Test.bmp");
         analyzeLog();
         driver.quit();

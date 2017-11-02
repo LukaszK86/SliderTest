@@ -11,11 +11,15 @@ repositories {
 
 dependencies {
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.1'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.0.1'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
     compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.6.0'
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.1'
+    compile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.0.1'
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.0.1'
     compile group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.0.1'
     testCompile group: 'commons-io', name: 'commons-io', version: '2.5'
     compile group: 'commons-io', name: 'commons-io', version: '2.5'
-    testCompile group: 'org.testng', name: 'testng', version: '6.11'
-    compile group: 'org.testng', name: 'testng', version: '6.11'
+    testCompile 'junit:junit:4.12'
+    compile 'junit:junit:4.12'
 }

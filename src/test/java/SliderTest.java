@@ -1,13 +1,14 @@
 
+import org.junit.Assert;
+import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 
-public class SliderTest extends BaseTest {
 
-    @Test
+public class SliderTest extends TestCase {
+
+  @Test
     public void moveSliderTest() throws InterruptedException {
         driver.get("http://demoqa.com/slider/");
         SliderPage sliderPage = PageFactory.initElements(driver, SliderPage.class);

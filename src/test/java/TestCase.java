@@ -1,3 +1,5 @@
+import org.junit.After;
+import org.junit.Before;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -7,15 +9,12 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Date;
 
-public class BaseTest {
+public class TestCase {
 
     public WebDriver driver;
 
@@ -33,14 +32,14 @@ public class BaseTest {
         }
     }
 
-    @BeforeTest
+    @Before
     public void beforeTest() throws MalformedURLException {
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         capabilities.setPlatform(Platform.WINDOWS);
         driver = new RemoteWebDriver(new URL("http://192.168.8.100:5556/wd/hub"), capabilities);
     }
 
-    @AfterTest
+    @After
     public void afterTest() throws Exception {
         takesScreenshot(driver, "C:\\Users\\Kuki\\Documents\\Programowanie\\Test\\Test.bmp");
         analyzeLog();
